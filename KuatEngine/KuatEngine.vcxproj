@@ -72,6 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(ProjectDir);$(ProjectDir)\src\3rdparty\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -147,13 +148,29 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="KuatEngine.cpp" />
+    <ClCompile Include="KuatEngineF.cpp" />
+    <ClCompile Include="src\3rdparty\imgui\imgui.cpp" />
+    <ClCompile Include="src\3rdparty\imgui\imgui_demo.cpp" />
+    <ClCompile Include="src\3rdparty\imgui\imgui_draw.cpp" />
+    <ClCompile Include="src\3rdparty\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="src\3rdparty\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\3rdparty\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="KuatEngineF.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="src\3rdparty\imgui\imconfig.h" />
+    <ClInclude Include="src\3rdparty\imgui\imgui.h" />
+    <ClInclude Include="src\3rdparty\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="src\3rdparty\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="src\3rdparty\imgui\imgui_internal.h" />
+    <ClInclude Include="src\3rdparty\imgui\imstb_rectpack.h" />
+    <ClInclude Include="src\3rdparty\imgui\imstb_textedit.h" />
+    <ClInclude Include="src\3rdparty\imgui\imstb_truetype.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="core.frag" />
-    <None Include="core.vertex" />
+    <None Include="src\Shaders\core.frag" />
+    <None Include="src\Shaders\core.vertex" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
