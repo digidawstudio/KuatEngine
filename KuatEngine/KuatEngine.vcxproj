@@ -148,16 +148,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="KuatEngine.cpp" />
-    <ClCompile Include="KuatEngineF.cpp" />
+    <ClCompile Include="src\GUI\MenuBar.cpp" />
     <ClCompile Include="src\3rdparty\imgui\imgui.cpp" />
     <ClCompile Include="src\3rdparty\imgui\imgui_demo.cpp" />
     <ClCompile Include="src\3rdparty\imgui\imgui_draw.cpp" />
     <ClCompile Include="src\3rdparty\imgui\imgui_impl_glfw.cpp" />
     <ClCompile Include="src\3rdparty\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="src\3rdparty\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\GUI\PropertiesTab.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="KuatEngineF.h" />
+    <ClInclude Include="kepch.h" />
+    <ClInclude Include="src\GUI\MenuBar.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="src\3rdparty\imgui\imconfig.h" />
     <ClInclude Include="src\3rdparty\imgui\imgui.h" />
@@ -167,6 +169,7 @@
     <ClInclude Include="src\3rdparty\imgui\imstb_rectpack.h" />
     <ClInclude Include="src\3rdparty\imgui\imstb_textedit.h" />
     <ClInclude Include="src\3rdparty\imgui\imstb_truetype.h" />
+    <ClInclude Include="src\GUI\PropertiesTab.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Shaders\core.frag" />

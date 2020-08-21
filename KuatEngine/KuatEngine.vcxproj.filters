@@ -36,7 +36,10 @@
     <ClCompile Include="src\3rdparty\imgui\imgui_impl_opengl3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="KuatEngineF.cpp">
+    <ClCompile Include="src\GUI\MenuBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\PropertiesTab.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -68,7 +71,13 @@
     <ClInclude Include="src\3rdparty\imgui\imgui_impl_opengl3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="KuatEngineF.h">
+    <ClInclude Include="src\GUI\MenuBar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kepch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\PropertiesTab.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,89 +2,15 @@
 //
 
 #define GLEW_STATIC
-#include "KuatEngineF.h" 
+//#include "KuatEngineF.h" 
+#include "src/GUI/MenuBar.h"
 
 //static void MenuList(GLuint VAO, GLuint VBO, GLFWwindow *window);
 //static void showPropertiesMenu(ImVec4 clear_color);
 
-const GLint WIDTH = 1280, HEIGHT = 720;
-static bool isShowEditorPrefs = false;
-static bool showAbout = false;
-ImVec4 editor_space_color = ImVec4(0.314f, 0.314f, 0.314f, 1.00f);
-
 void error_callback(int error, const char* description) {
     fprintf(stderr, "Error: %s\n", description);
 }
-
-static void ShowMainMenuBar(GLuint VAO, GLuint VBO, GLFWwindow *window, float *editor_space_color) {
-    if (isShowEditorPrefs)    showEditorPreferencesMenu(&isShowEditorPrefs);
-    if (showAbout)            showAboutMenu(&showAbout);
-
-    if (ImGui::BeginMainMenuBar())
-    {
-        if (ImGui::BeginMenu("File"))
-        {
-            MenuList(VAO, VBO, window, editor_space_color);
-            ImGui::EndMenu();
-        }
-        if (ImGui::BeginMenu("Edit"))
-        {
-            if (ImGui::MenuItem("Undo", "CTRL+Z")) {}
-            if (ImGui::MenuItem("Redo", "CTRL+Y", false, false)) {}  // Disabled item
-            ImGui::Separator();
-            if (ImGui::MenuItem("Cut", "CTRL+X")) {}
-            if (ImGui::MenuItem("Copy", "CTRL+C")) {}
-            if (ImGui::MenuItem("Paste", "CTRL+V")) {}
-            ImGui::EndMenu();
-        }
-        if (ImGui::BeginMenu("Others")) {
-            ImGui::MenuItem("About KuatEngine", NULL, &showAbout);
-            if (ImGui::MenuItem("KuatEngine API Documentation", "F1", false, false)) {}
-            ImGui::Separator();
-            if (ImGui::MenuItem("Magic Game Idea Generator", "alt+G")){}
-            ImGui::EndMenu();
-        }
-        ImGui::EndMainMenuBar();
-    }
-}
-
-static void MenuList(GLuint VAO, GLuint VBO, GLFWwindow *window, float *editor_space_color)
-{
-
-    //ImGui::MenuItem("(demo menu)", NULL, false, false);
-    if (ImGui::MenuItem("New")) {}
-    if (ImGui::MenuItem("Open", "Ctrl+O")) {}
-    if (ImGui::BeginMenu("Open Recent"))
-    {
-        ImGui::EndMenu();
-    }
-    if (ImGui::MenuItem("Save", "Ctrl+S")) {}
-    if (ImGui::MenuItem("Save As..")) {}
-
-    ImGui::Separator();
-
-    // Here we demonstrate appending again to the "Options" menu (which we already created above)
-    // Of course in this demo it is a little bit silly that this function calls BeginMenu("Options") twice.
-    // In a real code-base using it would make senses to use this feature from very different code locations.
-    if (ImGui::BeginMenu("Preferences")) // <-- Append!
-    {
-        ImGui::MenuItem("Editor", "ctrl+alt+e", &isShowEditorPrefs);
-        ImGui::EndMenu();
-    }
-    if (ImGui::MenuItem("Quit", "Alt+F4")) {
-        glDeleteVertexArrays(1, &VAO);
-        glDeleteBuffers(1, &VBO);
-
-        ImGui_ImplOpenGL3_Shutdown();
-        ImGui_ImplGlfw_Shutdown();
-        ImGui::DestroyContext();
-
-        glfwDestroyWindow(window);
-        glfwTerminate();
-        exit(0);
-    }
-}
-
 
 int main()
 {
@@ -173,7 +99,7 @@ int main()
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        ShowMainMenuBar(VAO, VBO, window, (float*)&editor_space_color);
+        MenuBar::ShowMainMenuBar(VAO, VBO, window);
 
         /*showPropertiesMenu(clear_color);*/
        
@@ -223,31 +149,6 @@ int main()
 
     glfwTerminate();
     return 0;
-}
-
-//For showing Editor Preferences Menu
-static void showEditorPreferencesMenu(bool* p_open) {
-    ImGui::SetNextWindowSize(ImVec2(300, 600), ImGuiCond_FirstUseEver);
-    if (ImGui::Begin("Editor Preferences", p_open, {ImGuiWindowFlags_NoCollapse})) {
-        ImGui::Text("Editor Layout Color");
-        ImGui::ColorEdit4("Pick a color", (float*) &editor_space_color);
-        ImGui::Button("Save", ImVec2(100, 0));
-        ImGui::SameLine();
-        if (ImGui::Button("Close"))
-            isShowEditorPrefs = false;
-    }
-    ImGui::End();
-}
-
-//For showing About
-static void showAboutMenu(bool* p_open) {
-    ImGui::SetNextWindowSize(ImVec2(300, 200), ImGuiCond_FirstUseEver);
-    if (ImGui::Begin("About KuatEngine", p_open, { ImGuiWindowFlags_NoCollapse })) {
-        ImGui::Text("KuatEngine is a Open Source C++ Game Engine made by Game Developer for Game Developer");
-        if (ImGui::Button("Close"))
-            showAbout = false;
-    }
-    ImGui::End();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
