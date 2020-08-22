@@ -84,5 +84,6 @@
   <ItemGroup>
     <None Include="src\Shaders\core.frag" />
     <None Include="src\Shaders\core.vertex" />
+    <None Include="src\Preferences\default_settings.json" />
   </ItemGroup>
 </Project>

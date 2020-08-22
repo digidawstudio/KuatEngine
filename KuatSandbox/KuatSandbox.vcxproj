@@ -21,32 +21,32 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{fd515458-8d14-4e32-9eca-f16c2e3d9d22}</ProjectGuid>
-    <RootNamespace>KuatEngine</RootNamespace>
+    <ProjectGuid>{78de2a8e-a4fe-45fa-84bf-49a0a20ca8a3}</ProjectGuid>
+    <RootNamespace>KuatSandbox</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -72,7 +72,6 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir);$(ProjectDir)\src\3rdparty\;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)</OutDir>
     <IntDir>$(SolutionDir)intermediate\$(Configuration)-$(Platform)\$(ProjectName)</IntDir>
   </PropertyGroup>
@@ -97,13 +96,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Reingalrt\source\repos\KuatEngine\vcpkg\installed\x86-windows\include;C:\Users\Reingalrt\Desktop\OpenGLLib\External Resources\GLEW\include;C:\Users\Reingalrt\Downloads\glfw-3.3.2.bin.WIN32\glfw-3.3.2.bin.WIN32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Reingalrt\source\repos\KuatEngine\vcpkg\installed\x86-windows\lib;C:\Users\Reingalrt\Desktop\OpenGLLib\External Resources\GLEW\lib\Release\Win32;C:\Users\Reingalrt\Downloads\glfw-3.3.2.bin.WIN32\glfw-3.3.2.bin.WIN32\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -128,14 +124,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Reingalrt\Desktop\OpenGLLib\External Resources\GLFW\include;C:\Users\Reingalrt\Desktop\OpenGLLib\External Resources\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Reingalrt\Desktop\OpenGLLib\External Resources\GLEW\lib\Release\x64;C:\Users\Reingalrt\Desktop\OpenGLLib\External Resources\GLFW\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -155,34 +147,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="KuatEngine.cpp" />
-    <ClCompile Include="src\GUI\MenuBar.cpp" />
-    <ClCompile Include="src\3rdparty\imgui\imgui.cpp" />
-    <ClCompile Include="src\3rdparty\imgui\imgui_demo.cpp" />
-    <ClCompile Include="src\3rdparty\imgui\imgui_draw.cpp" />
-    <ClCompile Include="src\3rdparty\imgui\imgui_impl_glfw.cpp" />
-    <ClCompile Include="src\3rdparty\imgui\imgui_impl_opengl3.cpp" />
-    <ClCompile Include="src\3rdparty\imgui\imgui_widgets.cpp" />
-    <ClCompile Include="src\GUI\PropertiesTab.cpp" />
+    <ProjectReference Include="..\KuatEngine\KuatEngine.vcxproj">
+      <Project>{fd515458-8d14-4e32-9eca-f16c2e3d9d22}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="kepch.h" />
-    <ClInclude Include="src\GUI\MenuBar.h" />
-    <ClInclude Include="Shader.h" />
-    <ClInclude Include="src\3rdparty\imgui\imconfig.h" />
-    <ClInclude Include="src\3rdparty\imgui\imgui.h" />
-    <ClInclude Include="src\3rdparty\imgui\imgui_impl_glfw.h" />
-    <ClInclude Include="src\3rdparty\imgui\imgui_impl_opengl3.h" />
-    <ClInclude Include="src\3rdparty\imgui\imgui_internal.h" />
-    <ClInclude Include="src\3rdparty\imgui\imstb_rectpack.h" />
-    <ClInclude Include="src\3rdparty\imgui\imstb_textedit.h" />
-    <ClInclude Include="src\3rdparty\imgui\imstb_truetype.h" />
-    <ClInclude Include="src\GUI\PropertiesTab.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\Preferences\default_settings.json" />
-    <None Include="src\Shaders\core.frag" />
-    <None Include="src\Shaders\core.vertex" />
+    <ClCompile Include="src\Application.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,6 +2,7 @@
 #ifndef MENU_BAR
 #define MENU_BAR
 #include "kepch.h"
+#include "json/json.h"
 
 class MenuBar
 {

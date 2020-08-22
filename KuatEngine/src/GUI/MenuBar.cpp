@@ -1,5 +1,10 @@
 #include "MenuBar.h"
 
+//Json::CharReaderBuilder reader;
+//Json::Value root;
+//
+//bool parseSuccess = reader.parse("../Preferences/default_settings.json", root, false);
+
 void MenuBar::ShowMainMenuBar(GLuint VAO, GLuint VBO, GLFWwindow* window) {
 	if (isShowEditorPrefs)    MenuBar::showEditorPreferencesMenu(&isShowEditorPrefs);
 	if (showAbout)            MenuBar::showAboutMenu(&showAbout);
@@ -86,7 +91,14 @@ void MenuBar::showEditorPreferencesMenu(bool* p_open) {
 	if (ImGui::Begin("Editor Preferences", p_open, { ImGuiWindowFlags_NoCollapse })) {
 		ImGui::Text("Editor Layout Color");
 		ImGui::ColorEdit4("Pick a color", (float*)&editor_space_color);
-		ImGui::Button("Save", ImVec2(100, 0));
+		if (ImGui::Button("Save", ImVec2(100, 0))) {
+			/*if (parseSuccess) {
+				cout << "Config list: " << root.asString() << endl;
+			}
+			else {
+				cout << "file not found";
+			}*/
+		}
 		ImGui::SameLine();
 		if (ImGui::Button("Close"))
 			isShowEditorPrefs = !p_open;
